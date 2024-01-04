@@ -27,7 +27,7 @@ PyCON is a free and easy-to-use application designed to convert PNG files into I
 
 If you don't have Python installed, you can download the latest release EXE file for a hassle-free experience.
 
-1. Visit the [Releases](https://github.com/yourusername/pycon-icon-converter/releases) page.
+1. Visit the [Releases](https://github.com/blaze005/pycon/releases) page.
 
 2. Download the latest release with the `.exe` extension.
 
