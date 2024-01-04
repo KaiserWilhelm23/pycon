@@ -2,6 +2,8 @@
 
 PyCON is a free and easy-to-use application designed to convert PNG files into ICO (Icon) files. This tool provides a user-friendly interface to simplify the process of creating custom icons for your projects.
 
+![alt text](https://github.com/blaze005/pycon/blob/main/app.png?raw=true)
+
 ## Features
 
 - **Import PNG Icons**: Easily import PNG icons into the application.
