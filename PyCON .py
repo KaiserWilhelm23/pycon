@@ -1,7 +1,8 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QGraphicsView, QGraphicsScene, QPushButton, QVBoxLayout, QFileDialog, QMessageBox, QShortcut, QWidget
-from PyQt5.QtGui import QPixmap, QFont, QKeySequence, QPainter
+from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QWheelEvent, QKeySequence
 from PIL import Image
 
 class IconConverterApp(QMainWindow):
@@ -14,7 +15,7 @@ class IconConverterApp(QMainWindow):
         self.viewing_area_size = (480, 480)  # Pre-defined size for the viewing area
 
         self.scene = QGraphicsScene(self)
-        self.view = QGraphicsView(self.scene)
+        self.view = MyGraphicsView(self.scene)
         self.view.setRenderHint(QPainter.Antialiasing, True)
         self.view.setAlignment(Qt.AlignCenter)
         self.view.setFixedSize(*self.viewing_area_size)  # Set fixed size for the viewing area
@@ -53,18 +54,18 @@ class IconConverterApp(QMainWindow):
         # Menu bar
         menubar = self.menuBar()
         menubar.setStyleSheet(
-    "QMenuBar {"
-    "   background-color: #2c3e50;"  # Dark background color
-    "   color: #ecf0f1;"              # Light text color
-    "}"
-    "QMenuBar::item {"
-    "   background-color: #2c3e50;"  # Dark background color
-    "   padding: 8px 16px;"           # Padding around the menu items
-    "}"
-    "QMenuBar::item:selected {"
-    "   background-color: #34495e;"  # Slightly lighter background color when selected
-    "}"
-)
+            "QMenuBar {"
+            "   background-color: #2c3e50;"  # Dark background color
+            "   color: #ecf0f1;"              # Light text color
+            "}"
+            "QMenuBar::item {"
+            "   background-color: #2c3e50;"  # Dark background color
+            "   padding: 8px 16px;"           # Padding around the menu items
+            "}"
+            "QMenuBar::item:selected {"
+            "   background-color: #34495e;"  # Slightly lighter background color when selected
+            "}"
+        )
         info_menu = menubar.addMenu('Info')
 
         help_action = info_menu.addAction('Help')
@@ -81,7 +82,9 @@ class IconConverterApp(QMainWindow):
                                               'Ctrl+Shift+X: Remove the imported image\n'
                                               'Ctrl+Shift+I: Import\n'
                                               'Ctrl+Shift+C: Convert\n'
-                                              'Esc: Quit')
+                                              'Esc: Quit\n'
+                                              'Ctrl++: Zoom In\n'
+                                              'Ctrl+-: Zoom Out')
 
     def show_about(self):
         QMessageBox.about(self, 'About', 'PyCON\n'
@@ -134,6 +137,16 @@ class IconConverterApp(QMainWindow):
     def remove_image(self):
         self.scene.clear()
         self.statusBar().showMessage("Imported image removed")
+
+class MyGraphicsView(QGraphicsView):
+    def wheelEvent(self, event: QWheelEvent):
+        if event.modifiers() == Qt.ControlModifier:
+            # Zoom with Ctrl + Mouse Wheel
+            factor = 1.2 if event.angleDelta().y() > 0 else 1 / 1.2
+            self.scale(factor, factor)
+        else:
+            # Default behavior for non-Ctrl+Wheel events
+            super().wheelEvent(event)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
