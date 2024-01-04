@@ -5,10 +5,8 @@ PyCON is a free and easy-to-use application designed to convert PNG files into I
 ## Features
 
 - **Import PNG Icons**: Easily import PNG icons into the application.
-- **Set Icon Size**: Choose the desired size for the icon before conversion.
 - **Preview Image**: View a preview of the imported icon before converting.
 - **Dark Mode**: The application features a dark mode for a modern look.
-- **Resizable Viewing Area**: Users can resize the viewing area within specified limits.
 - **Keyboard Shortcuts**:
   - **Ctrl+Shift+X**: Remove the imported image
   - **Ctrl+Shift+I**: Import
@@ -17,11 +15,10 @@ PyCON is a free and easy-to-use application designed to convert PNG files into I
 
 ## How to Use
 
-1. Click on the "Import Icon" button to select and import a PNG icon.
-2. Set the desired size for the icon using the "Icon Size" input field.
-3. Preview the imported icon in the viewing area.
-4. Click the "Convert" button to convert the PNG icon to ICO format.
-5. Save the converted ICO file to your desired location.
+1. Click on the "Import PNG" button to select and import a PNG icon.
+2. Preview the imported icon in the viewing area.
+3. Click the "Convert" button to convert the PNG icon to ICO format.
+4. Save the converted ICO file to your desired location.
 
 ## Installation
 
@@ -29,7 +26,7 @@ If you don't have Python installed, you can download the latest release EXE file
 
 1. Visit the [Releases](https://github.com/blaze005/pycon/releases) page.
 
-2. Download the latest release with the `.exe` extension.
+2. Download the latest release with the `.exe` extension. Please, this is not a virus!!!! 
 
 3. Run the downloaded EXE file to start using PyCON - Icon Converter.
 
